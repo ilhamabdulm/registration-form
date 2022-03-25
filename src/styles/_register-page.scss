@@ -43,3 +43,43 @@
     }
   }
 }
+
+.table {
+  &-button__action {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+  }
+}
+
+.success-modal {
+  height: 30rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+
+  section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+    width: 30rem;
+
+    & > svg {
+      width: 5rem;
+      height: 5rem;
+    }
+
+    div {
+      text-align: center;
+      h1 {
+        font-size: $font-xl;
+        margin-bottom: 0.6rem;
+      }
+    }
+  }
+}

@@ -1,9 +1,10 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 
 import { Button, Input } from 'components';
-import { useForm } from 'hooks';
+import { useForm, useModal } from 'hooks';
 import { useRegisterStore } from 'store';
+import NotificationModal from './notification-modal';
 
 const RegisterForm = (props) => {
   const { state, handleStateSchange, resetForm, handleBulkChange } = useForm({
@@ -12,10 +13,17 @@ const RegisterForm = (props) => {
     email: '',
     password: '',
   });
+  const { isOpen, toggleModal } = useModal();
+
   const {
     state: { registeredList, selectedUser },
     handleUpdateRegisterStore,
   } = useRegisterStore();
+
+  const [notification, setNotification] = useState({
+    title: '',
+    message: '',
+  });
 
   useEffect(() => {
     if (selectedUser) {
@@ -35,6 +43,28 @@ const RegisterForm = (props) => {
   const _handleSubmit = (payload) => {
     const data = [...registeredList, { ...payload, id: uuidv4() }];
     handleUpdateRegisterStore('registeredList', data);
+    setNotification({
+      title: 'Berhasil',
+      message: 'Data berhasil ditambahkan',
+    });
+    toggleModal();
+    resetForm();
+  };
+
+  const _handleEdit = (payload, id) => {
+    let data = [...registeredList];
+    let toEditIdx = data?.findIndex((dt) => dt.id === id);
+    let toEdit = data?.find((dt) => dt.id === id);
+    toEdit = { ...toEdit, ...payload };
+    data[toEditIdx] = toEdit;
+
+    handleUpdateRegisterStore('registeredList', data);
+    handleUpdateRegisterStore('selectedUser', null);
+    setNotification({
+      title: 'Berhasil',
+      message: 'Data berhasil diperbaharui',
+    });
+    toggleModal();
     resetForm();
   };
 
@@ -79,13 +109,27 @@ const RegisterForm = (props) => {
         />
       </form>
       <footer>
-        <Button variant="primary" onClick={() => _handleSubmit(state)}>
+        <Button
+          variant="primary"
+          onClick={() =>
+            selectedUser
+              ? _handleEdit(state, selectedUser?.id)
+              : _handleSubmit(state)
+          }
+        >
           Submit
         </Button>
         <Button variant="tertiary" onClick={resetForm}>
           Reset
         </Button>
       </footer>
+
+      <NotificationModal
+        isOpen={isOpen}
+        toggleModal={toggleModal}
+        title={notification.title}
+        message={notification.message}
+      />
     </section>
   );
 };

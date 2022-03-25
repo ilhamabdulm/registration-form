@@ -8,6 +8,7 @@ export const RegisterStoreActionTypes = {
 
 const INITIAL_STATE = {
   registeredList: [],
+  selectedUser: null,
 };
 
 const reducer = (state, action) => {
