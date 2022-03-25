@@ -23,7 +23,7 @@ const Button = (props) => {
   return (
     <button
       type={type}
-      danger={`${danger}`}
+      data-danger={`${danger}`}
       className={classes}
       onClick={() => onClick()}
       disabled={disabled}

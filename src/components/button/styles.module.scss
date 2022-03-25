@@ -65,7 +65,7 @@
     }
 
     &:hover {
-      background-color: rgb(143, 1, 1);
+      background-color: #03631b;
     }
 
     &:active {
@@ -78,6 +78,14 @@
 
     &:disabled {
       @include disabled-style($N100);
+    }
+
+    &[data-danger='true'] {
+      background-color: $R700;
+
+      &:hover {
+        background-color: $R300;
+      }
     }
   }
 

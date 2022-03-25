@@ -62,7 +62,7 @@ const ResultTable = (props) => {
               >
                 Edit
               </Button>
-              <Button size="small" onClick={() => _handleDelete(dt)}>
+              <Button size="small" onClick={() => _handleDelete(dt)} danger>
                 Delete
               </Button>
             </div>

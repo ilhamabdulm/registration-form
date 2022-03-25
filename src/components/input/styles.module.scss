@@ -30,6 +30,10 @@
     background-color: $NEUTRAL2;
     border: 1px solid $NEUTRAL3;
 
+    &:focus {
+      border-color: $PRIMARY_1;
+    }
+
     &[data-color='white'] {
       background-color: $NEUTRAL0;
     }
