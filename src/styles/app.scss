@@ -1,0 +1,160 @@
+@import './_reset';
+@import './variables';
+@import './register-page';
+
+:root {
+  font-size: calc(100vw * 10 / 1440);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type='number'] {
+  -moz-appearance: textfield;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  font-weight: 700;
+  src: url('../assets/fonts/Poppins-Bold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Poppins';
+  font-weight: 600;
+  src: url('../assets/fonts/Poppins-Medium.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Poppins';
+  font-weight: 500;
+  src: url('../assets/fonts/Poppins-Regular.ttf') format('truetype');
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  position: relative;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 700;
+  font-family: 'Poppins';
+}
+
+p,
+span,
+ul,
+li,
+ol,
+input,
+button,
+div {
+  font-size: $font-xs;
+  font-weight: 500;
+  font-family: 'Poppins';
+}
+
+h1 {
+  $fontSize: ($font-2xl);
+  font-size: ($fontSize);
+  line-height: calc($fontSize + 1rem);
+}
+
+h2 {
+  $fontSize: ($font-xl);
+  font-size: ($fontSize);
+  line-height: calc($fontSize + 1rem);
+}
+
+h3 {
+  $fontSize: ($font-lg);
+  font-size: ($fontSize);
+  font-weight: 600;
+  line-height: calc($fontSize + 1rem);
+}
+
+h4 {
+  $fontSize: ($font-md);
+  font-size: ($fontSize);
+  font-weight: 600;
+  line-height: calc($fontSize + 1rem);
+}
+
+h5 {
+  $fontSize: ($font-sm);
+  font-size: ($fontSize);
+  font-weight: 600;
+  line-height: calc($fontSize + 1rem);
+}
+
+h6 {
+  $fontSize: ($font-xs);
+  font-size: ($fontSize);
+  font-weight: 600;
+  line-height: calc($fontSize + 1rem);
+}
+
+abbr {
+  text-decoration: none;
+}
+
+.modal-portal {
+  position: relative;
+  z-index: 20;
+}
+
+.table-button {
+  padding: 0.2rem 1rem;
+  color: #0b0b0b;
+  font-size: $font-2xs;
+
+  &[data-color='blue'] {
+    background-color: #468ffd;
+    color: #ffffff;
+  }
+
+  &[data-color='green'] {
+    background-color: #0fa735;
+    color: #ffffff;
+  }
+
+  &[data-color='lightblue'] {
+    background-color: #4ba0b9;
+    color: #ffffff;
+  }
+
+  &:hover {
+    filter: hue-rotate(10deg);
+  }
+
+  & > a {
+    color: inherit;
+  }
+
+  & > * {
+    cursor: pointer;
+  }
+}
+
+@media only screen and (max-device-width: 512px) and (max-width: 512px) {
+  :root {
+    font-size: calc(100vw * 10 / 512);
+  }
+}

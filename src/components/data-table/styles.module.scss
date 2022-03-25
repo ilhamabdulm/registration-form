@@ -1,0 +1,54 @@
+@import '../../styles/variables';
+
+.table {
+  overflow-x: auto;
+  max-width: 108rem;
+
+  &_header {
+    // display: grid;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1rem;
+
+    &[data-headerseparator='true'] {
+      border-bottom: 1px solid $NEUTRAL8;
+    }
+
+    &__title {
+      font-weight: 700;
+    }
+  }
+
+  &_body {
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
+    margin: 2.4rem 0;
+
+    &__row {
+      // display: grid;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 0.6rem 1rem;
+
+      &_data {
+        &[data-ellipsis='true'] {
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+      }
+    }
+  }
+
+  &_footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 1.6rem 0;
+  }
+}

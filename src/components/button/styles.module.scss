@@ -1,0 +1,136 @@
+@import '../../styles/variables';
+
+@mixin disabled-style($bg-color: transparent) {
+  background-color: $bg-color;
+  color: $N300;
+  cursor: not-allowed;
+  text-decoration: none;
+
+  & img {
+    filter: invert(89%) sepia(11%) saturate(252%) hue-rotate(175deg)
+      brightness(88%) contrast(92%);
+  }
+}
+
+.root {
+  // default style (normal)
+  width: fit-content;
+  font-weight: 600;
+  border-radius: 999px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  border: 1px solid transparent;
+  height: 3.6rem;
+
+  & > svg {
+    width: 2rem;
+    height: 2rem;
+  }
+
+  &[full='true'] {
+    width: 100%;
+    font-size: $font-sm;
+  }
+
+  &[data-size='small'] {
+    padding: 0.25rem 1rem;
+    font-size: 1rem;
+    height: 2.4rem;
+  }
+
+  &[data-size='normal'] {
+    padding: 0.75rem 1.25rem;
+    font-size: $font-xs;
+  }
+
+  &[data-size='medium'] {
+    padding: 0.75rem 1.25rem;
+    font-size: $font-md;
+  }
+
+  &[data-size='large'] {
+    padding: 0.75rem 1.25rem;
+    font-size: $font-lg;
+  }
+
+  &.primary {
+    background-color: $PRIMARY_1;
+    color: #fff;
+    & img {
+      filter: invert(100%) sepia(18%) saturate(653%) hue-rotate(177deg)
+        brightness(98%) contrast(95%);
+    }
+
+    &:hover {
+      background-color: rgb(143, 1, 1);
+    }
+
+    &:active {
+      color: #ccc;
+      & img {
+        filter: invert(77%) sepia(46%) saturate(464%) hue-rotate(184deg)
+          brightness(107%) contrast(97%);
+      }
+    }
+
+    &:disabled {
+      @include disabled-style($N100);
+    }
+  }
+
+  &.secondary {
+    color: $NEUTRAL8;
+    background-color: transparent;
+    border: 1px solid $NEUTRAL8;
+    & img {
+      filter: invert(33%) sepia(26%) saturate(5883%) hue-rotate(196deg)
+        brightness(91%) contrast(81%);
+    }
+
+    &:hover {
+      background-color: $NEUTRAL2;
+      border: 1px solid transparent;
+    }
+
+    &:active {
+      border: 1px solid $B100;
+    }
+
+    &:disabled {
+      @include disabled-style();
+      border: 1px solid $N300;
+    }
+  }
+
+  &.tertiary {
+    color: $NEUTRAL8;
+    background-color: transparent;
+    & img {
+      filter: invert(33%) sepia(26%) saturate(5883%) hue-rotate(196deg)
+        brightness(91%) contrast(81%);
+    }
+
+    &:hover {
+      text-decoration: underline;
+    }
+
+    &:active {
+      color: $B800;
+      text-decoration: none;
+    }
+
+    &:disabled {
+      @include disabled-style();
+    }
+  }
+}
+
+@media only screen and (max-device-width: 512px) and (max-width: 512px) {
+  .root {
+    padding: 1.2rem 1.8rem;
+    font-size: $font-md;
+  }
+}

@@ -1,0 +1,34 @@
+@import './variables';
+
+.root {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  max-width: 100vw;
+  min-height: 100vh;
+  margin: 0 auto;
+  background-color: $NEUTRAL2;
+  //   transform: translateX(50%);
+  //   margin-right: 50%;
+}
+
+.container {
+  background-color: $NEUTRAL0;
+  max-width: 90rem;
+  width: 90rem;
+  padding: 2rem;
+}
+
+.form-container {
+  margin: 4rem 0;
+
+  & > form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+
+    & > *:not(:last-child) {
+      margin-bottom: 1.6rem;
+    }
+  }
+}

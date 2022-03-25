@@ -1,0 +1,44 @@
+@import '../../styles/variables';
+
+.input {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  width: 100%;
+
+  &_checkbox {
+    label {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 0.6rem;
+
+      & > input {
+        cursor: pointer;
+      }
+    }
+  }
+
+  & > label {
+    font-size: $font-sm;
+    margin-left: 0.4rem;
+    margin-bottom: 0.6rem;
+  }
+
+  & > input {
+    padding: 0.8rem 1.2rem;
+    background-color: $NEUTRAL2;
+    border: 1px solid $NEUTRAL3;
+
+    &[data-color='white'] {
+      background-color: $NEUTRAL0;
+    }
+
+    &[type='password'] {
+      letter-spacing: 0.4rem;
+      &::placeholder {
+        letter-spacing: 0rem;
+      }
+    }
+  }
+}
