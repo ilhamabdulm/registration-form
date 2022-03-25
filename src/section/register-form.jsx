@@ -86,7 +86,6 @@ const RegisterForm = (props) => {
       .then((res) => {
         const data = [...registeredList, { ...payload, id: uuidv4() }];
         handleUpdateRegisterStore('registeredList', data);
-        console.log(res, 'this is res');
         setNotification({
           title: 'Berhasil',
           message: 'Data berhasil ditambahkan',
@@ -115,7 +114,6 @@ const RegisterForm = (props) => {
           title: 'Terjadi Kesalahan',
           message: errors,
         });
-        console.log(errors);
       });
   };
 

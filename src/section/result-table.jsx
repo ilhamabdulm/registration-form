@@ -10,7 +10,6 @@ const ResultTable = (props) => {
   } = useRegisterStore();
 
   const _handleDelete = (id) => {
-    console.log(id, registeredList);
     const data = [...registeredList].filter((dt) => dt?.id !== id);
     handleUpdateRegisterStore('registeredList', data);
   };
