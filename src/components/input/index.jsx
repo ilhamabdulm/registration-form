@@ -1,6 +1,8 @@
+import { useState } from 'react';
+
 import styles from './styles.module.scss';
 
-const { input } = styles;
+const { input, input_error } = styles;
 
 const Input = (props) => {
   const {
@@ -13,7 +15,9 @@ const Input = (props) => {
     disabled = false,
     number = false,
     color = 'default',
+    error,
   } = props;
+  const [isTouched, setIsTouched] = useState(false);
 
   return (
     <div className={input}>
@@ -39,7 +43,11 @@ const Input = (props) => {
         value={value}
         disabled={disabled}
         data-color={color}
+        onFocus={() => setIsTouched(true)}
+        onBlur={() => setIsTouched(false)}
+        data-error={`${error?.state}`}
       />
+      {error?.state && <span className={input_error}>{error?.message}</span>}
     </div>
   );
 };

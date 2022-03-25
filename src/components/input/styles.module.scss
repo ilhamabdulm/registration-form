@@ -44,5 +44,15 @@
         letter-spacing: 0rem;
       }
     }
+
+    &[data-error='true'] {
+      border-color: $R700;
+      border-width: 2px;
+    }
+  }
+
+  &_error {
+    color: $R700;
+    font-size: $font-3xs;
   }
 }
