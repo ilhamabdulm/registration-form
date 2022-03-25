@@ -31,4 +31,15 @@
       margin-bottom: 1.6rem;
     }
   }
+
+  & > footer {
+    margin-top: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1.6rem;
+
+    & > button {
+      width: 10rem;
+    }
+  }
 }
