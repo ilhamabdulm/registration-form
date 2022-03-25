@@ -1,18 +1,29 @@
+import { useEffect } from 'react';
+import { v4 as uuidv4 } from 'uuid';
+
 import { Button, Input } from 'components';
 import { useForm } from 'hooks';
 import { useRegisterStore } from 'store';
 
 const RegisterForm = (props) => {
-  const { state, handleStateSchange, resetForm } = useForm({
+  const { state, handleStateSchange, resetForm, handleBulkChange } = useForm({
     first_name: '',
     last_name: '',
     email: '',
     password: '',
   });
   const {
-    state: { registeredList },
+    state: { registeredList, selectedUser },
     handleUpdateRegisterStore,
   } = useRegisterStore();
+
+  useEffect(() => {
+    if (selectedUser) {
+      handleBulkChange(selectedUser);
+    } else {
+      resetForm();
+    }
+  }, [selectedUser]);
 
   const _handleChange = (e) => {
     const name = e.target.name;
@@ -22,8 +33,7 @@ const RegisterForm = (props) => {
   };
 
   const _handleSubmit = (payload) => {
-    const data = [...registeredList, payload];
-    console.log(data);
+    const data = [...registeredList, { ...payload, id: uuidv4() }];
     handleUpdateRegisterStore('registeredList', data);
     resetForm();
   };

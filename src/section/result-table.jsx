@@ -1,12 +1,19 @@
 import { useMemo } from 'react';
 
-import { DataTable } from 'components';
+import { Button, DataTable } from 'components';
 import { useRegisterStore } from 'store';
 
 const ResultTable = (props) => {
   const {
     state: { registeredList },
+    handleUpdateRegisterStore,
   } = useRegisterStore();
+
+  const _handleDelete = (id) => {
+    console.log(id, registeredList);
+    const data = [...registeredList].filter((dt) => dt?.id !== id);
+    handleUpdateRegisterStore('registeredList', data);
+  };
 
   const columns = useMemo(() => {
     return [
@@ -40,11 +47,30 @@ const ResultTable = (props) => {
       },
       {
         key: 'action',
-        dataIndex: 'action',
+        dataIndex: 'id',
         title: 'Action',
+        align: 'center',
+        render: (dt, record) => {
+          return (
+            <div className="table-button__action">
+              <Button
+                size="small"
+                variant="secondary"
+                onClick={() => {
+                  handleUpdateRegisterStore('selectedUser', record);
+                }}
+              >
+                Edit
+              </Button>
+              <Button size="small" onClick={() => _handleDelete(dt)}>
+                Delete
+              </Button>
+            </div>
+          );
+        },
       },
     ];
-  }, []);
+  }, [_handleDelete]);
 
   return (
     <section className="table-container">
