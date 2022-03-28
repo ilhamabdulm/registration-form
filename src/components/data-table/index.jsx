@@ -3,7 +3,6 @@ import styles from './styles.module.scss';
 const {
   table,
   table_header,
-  table_footer,
   table_body,
   table_header__title,
   table_body__row,
@@ -15,8 +14,6 @@ const DataTable = (props) => {
     columns = [],
     data = [],
     headerSeparator = false,
-    pagination = false,
-    paginatorInfo,
     scrollX = false,
   } = props;
 

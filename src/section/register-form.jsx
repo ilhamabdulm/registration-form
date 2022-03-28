@@ -69,7 +69,7 @@ const RegisterForm = (props) => {
         state: false,
       });
     }
-  }, [selectedUser]);
+  }, [selectedUser, handleBulkChange, setErrors]);
 
   const _handleChange = (e) => {
     const name = e.target.name;

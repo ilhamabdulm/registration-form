@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import styles from './styles.module.scss';
 
@@ -18,6 +18,10 @@ const Input = (props) => {
     error,
   } = props;
   const [isTouched, setIsTouched] = useState(false);
+
+  useEffect(() => {
+    console.log(isTouched);
+  }, [isTouched]);
 
   return (
     <div className={input}>

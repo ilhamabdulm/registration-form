@@ -69,7 +69,7 @@ const ResultTable = (props) => {
         },
       },
     ];
-  }, [_handleDelete]);
+  }, [_handleDelete, handleUpdateRegisterStore]);
 
   return (
     <section className="table-container">
