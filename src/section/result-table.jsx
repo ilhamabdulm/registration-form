@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import { useCallback, useMemo } from 'react';
 
 import { Button, DataTable } from 'components';
 import { useRegisterStore } from 'store';
@@ -9,10 +9,13 @@ const ResultTable = (props) => {
     handleUpdateRegisterStore,
   } = useRegisterStore();
 
-  const _handleDelete = (id) => {
-    const data = [...registeredList].filter((dt) => dt?.id !== id);
-    handleUpdateRegisterStore('registeredList', data);
-  };
+  const _handleDelete = useCallback(
+    (id) => {
+      const data = [...registeredList].filter((dt) => dt?.id !== id);
+      handleUpdateRegisterStore('registeredList', data);
+    },
+    [handleUpdateRegisterStore, registeredList]
+  );
 
   const columns = useMemo(() => {
     return [
